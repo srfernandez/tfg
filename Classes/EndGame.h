@@ -4,8 +4,8 @@
  *  Created on: 12/05/2016
  *      Author: Susana
  */
-#ifndef __MAINMENUSCENE_H__
-#define __MAINMENUSCENE_H__
+#ifndef __ENDGAMESCENE_H__
+#define __ENDGAMESCENE_H__
 
 #include "cocos2d.h"
 #include "json/document.h"
@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-class MainMenu: public cocos2d::Layer{
+class EndGame: public cocos2d::Layer{
 public:
 	static Scene* createScene();
 	virtual bool init();
@@ -26,20 +26,20 @@ public:
 
 
 private:
-	Sprite* _background;
-	Menu* menu;
-	 rapidjson::Document saveFile;
 	short _difficulty;
-	cocos2d::MenuItemToggle* item;
-	void play(Ref* pSender);
-	void exit(Ref* pSender);
+	rapidjson::Document saveFile;
+	Menu* menu;
+	Sprite* _background;
+	Label* _endGame;
+	void Back(Ref* pSender);
+	void Retry(Ref* pSender);
+	void Play(Ref* pSender);
 	void Continue(Ref* pSender);
-	void setDifficulty(Ref* pSender);
-	void cargarJson();
-	void createMenu();
-	void FirstGame();
-	CREATE_FUNC(MainMenu);
+	void updateSaves();
+	CREATE_FUNC(EndGame);
+	bool _isWon;
+	short _points;
 };
 
 
-#endif /* __MAINMENUSCENE_H__ */
+#endif /* __ENDGAMESCENE_H__ */

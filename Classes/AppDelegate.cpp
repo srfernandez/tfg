@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "MainMenuScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -43,10 +44,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	        director->setOpenGLView(glview);
 	    }
 
-	    //glview->setDesignResolutionSize(1024.0, 600.0, kResolutionFixedHeight);
+	    glview->setDesignResolutionSize(1920, 1080, ResolutionPolicy::FIXED_WIDTH );
+	    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("sheet.plist");
 
 	    // turn on display FPS
-	    // director->setDisplayStats(true);
+	    director->setDisplayStats(true);
 
 	    // set FPS. the default value is 1.0/60 if you don't call this
 	    director->setAnimationInterval(1.0 / 60);
